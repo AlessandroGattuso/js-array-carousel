@@ -28,6 +28,7 @@ itemsPreview.innerHTML +=itemsContent;
 //const items = document.querySelector('.item'); //ALTERNATIVA
 const items = document.querySelectorAll('.slider .item');
 let itemActive = 0;
+let itemPreviewActive = 0;
 
 items[itemActive].classList.add('active');
 
@@ -44,6 +45,36 @@ const prev = document.querySelector('.prev');
 const next = document.querySelector('.next');
 
 next.addEventListener('click', function(){
+    //verifico che non siamo fuori dall'array
+    if(itemActive > 0){
+        //vado a rimuovere la classe active da quello attuale
+        items[itemActive].classList.remove('active');
+        circles[itemActive].classList.remove('active');
+        previewItems[itemActive].classList.remove('active');
+    
+        //aggiungere la class active all'elemento precedente dell'Array items e cicle
+        items[--itemActive].classList.add('active');
+        circles[itemActive].classList.add('active');
+        previewItems[itemActive].classList.add('active');
+    }
+    //se siamo fuori dall'array riparti dall'ultimo elemento
+    else{
+        //vado a rimuovere la classe active da quello attuale
+        items[itemActive].classList.remove('active');
+        circles[itemActive].classList.remove('active');
+        previewItems[itemActive].classList.remove('active');
+    
+        //imposto il valore di ItemActive all'ultima locazione dell'Array
+        itemActive = imagesArray.length - 1;
+    
+        //aggiungere la class active all'ultimo elemento dell'Array items e cicle
+        items[itemActive].classList.add('active');
+        circles[itemActive].classList.add('active');
+        previewItems[itemActive].classList.add('active');
+    }
+});
+
+prev.addEventListener('click', function(){
     //verifico che non siamo fuori dall'array
     if(itemActive < imagesArray.length-1){
 
@@ -74,32 +105,6 @@ next.addEventListener('click', function(){
         circles[itemActive].classList.add('active');
         previewItems[itemActive].classList.add('active');
 
-    }
-});
-
-prev.addEventListener('click', function(){
-    //verifico che non siamo fuori dall'array
-    if(itemActive > 0){
-        //vado a rimuovere la classe active da quello attuale
-        items[itemActive].classList.remove('active');
-        circles[itemActive].classList.remove('active');
-
-        //aggiungere la class active all'elemento precedente dell'Array items e cicle
-        items[--itemActive].classList.add('active');
-        circles[itemActive].classList.add('active');
-    }
-    //se siamo fuori dall'array riparti dall'ultimo elemento
-    else{
-        //vado a rimuovere la classe active da quello attuale
-        items[itemActive].classList.remove('active');
-        circles[itemActive].classList.remove('active');
-
-        //imposto il valore di ItemActive all'ultima locazione dell'Array
-        itemActive = imagesArray.length - 1;
-
-        //aggiungere la class active all'ultimo elemento dell'Array items e cicle
-        items[itemActive].classList.add('active');
-        circles[itemActive].classList.add('active');
     }
 })
 
