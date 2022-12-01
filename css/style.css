@@ -96,10 +96,10 @@
 
 .preview img{
     width: 100%;
-    opacity: 0.6;
+    filter: brightness(50%);
     object-fit: cover;
 }
 
 .preview .active img{
-    opacity: 1;
+    filter: brightness(100%)
 }
