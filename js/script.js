@@ -44,6 +44,21 @@ circles[itemActive].classList.add('active');
 const prev = document.querySelector('.prev');
 const next = document.querySelector('.next');
 
+for(let i = 0; i < circles.length; i++){
+    let circle = document.getElementById("circle-"+i);
+    circle.addEventListener('click', function(){
+        items[itemActive].classList.remove('active');
+        circles[itemActive].classList.remove('active');
+        previewItems[itemActive].classList.remove('active');
+
+        itemActive = i;
+
+        items[itemActive].classList.add('active');
+        circles[itemActive].classList.add('active');
+        previewItems[itemActive].classList.add('active');
+    });
+}
+
 next.addEventListener('click', function(){
 
     //vado a rimuovere la classe active da quello attuale
