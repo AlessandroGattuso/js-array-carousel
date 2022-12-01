@@ -45,67 +45,37 @@ const prev = document.querySelector('.prev');
 const next = document.querySelector('.next');
 
 next.addEventListener('click', function(){
+
+    //vado a rimuovere la classe active da quello attuale
+    items[itemActive].classList.remove('active');
+    circles[itemActive].classList.remove('active');
+    previewItems[itemActive].classList.remove('active');
+
     //verifico che non siamo fuori dall'array
-    if(itemActive > 0){
-        //vado a rimuovere la classe active da quello attuale
-        items[itemActive].classList.remove('active');
-        circles[itemActive].classList.remove('active');
-        previewItems[itemActive].classList.remove('active');
+    (itemActive > 0) ? itemActive-- : itemActive = imagesArray.length - 1;
+
+    //aggiungere la class active all'elemento precedente dell'Array items e cicle
+    items[itemActive].classList.add('active');
+    circles[itemActive].classList.add('active');
+    previewItems[itemActive].classList.add('active');
     
-        //aggiungere la class active all'elemento precedente dell'Array items e cicle
-        items[--itemActive].classList.add('active');
-        circles[itemActive].classList.add('active');
-        previewItems[itemActive].classList.add('active');
-    }
-    //se siamo fuori dall'array riparti dall'ultimo elemento
-    else{
-        //vado a rimuovere la classe active da quello attuale
-        items[itemActive].classList.remove('active');
-        circles[itemActive].classList.remove('active');
-        previewItems[itemActive].classList.remove('active');
-    
-        //imposto il valore di ItemActive all'ultima locazione dell'Array
-        itemActive = imagesArray.length - 1;
-    
-        //aggiungere la class active all'ultimo elemento dell'Array items e cicle
-        items[itemActive].classList.add('active');
-        circles[itemActive].classList.add('active');
-        previewItems[itemActive].classList.add('active');
-    }
 });
 
 prev.addEventListener('click', function(){
+
+    //vado a rimuovere la classe active da quello attuale
+    items[itemActive].classList.remove('active');
+    circles[itemActive].classList.remove('active');
+    previewItems[itemActive].classList.remove('active');
+
     //verifico che non siamo fuori dall'array
-    if(itemActive < imagesArray.length-1){
+    (itemActive < imagesArray.length - 1) ? itemActive++ : itemActive = 0;
 
-        //vado a rimuovere la classe active da quello attuale
-        items[itemActive].classList.remove('active');
-        circles[itemActive].classList.remove('active');
-        previewItems[itemActive].classList.remove('active');
-
-        //aggiungere la class active all'elemento successivo dell'Array items e cicle
-        items[++itemActive].classList.add('active');
-        circles[itemActive].classList.add('active');
-        previewItems[itemActive].classList.add('active');
-    }
-
-    //se siamo fuori dall'array riparti dal primo elemento
-    else{
-
-        //vado a rimuovere la classe active da quello attuale
-        items[itemActive].classList.remove('active');
-        circles[itemActive].classList.remove('active');
-        previewItems[itemActive].classList.remove('active');
-
-        //imposto il valore di ItemActive alla prima locazione dell'Array
-        itemActive = 0; 
-
-        //aggiungere la class active al primo elemento dell'array items e cicle
-        items[itemActive].classList.add('active');
-        circles[itemActive].classList.add('active');
-        previewItems[itemActive].classList.add('active');
-
-    }
+    //aggiungere la class active all'elemento successivo dell'Array items e cicle
+    items[itemActive].classList.add('active');
+    circles[itemActive].classList.add('active');
+    previewItems[itemActive].classList.add('active');
+    
 })
 
 
