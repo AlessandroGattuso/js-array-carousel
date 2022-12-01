@@ -20,15 +20,19 @@ for(let i = 0; i < imagesArray.length; i++){
 const itemsSlider = document.querySelector('.item-slider');
 itemsSlider.innerHTML += itemsContent;
 
+const itemsPreview = document.querySelector('.preview');
+itemsPreview.innerHTML +=itemsContent;
 
 //Prendiamo la prima immagine dell'array e la rendiamo attiva
 
 //const items = document.querySelector('.item'); //ALTERNATIVA
-
-const items = document.getElementsByClassName('item');
+const items = document.querySelectorAll('.slider .item');
 let itemActive = 0;
 
 items[itemActive].classList.add('active');
+
+const previewItems = document.querySelectorAll('.preview .item');
+previewItems[itemActive].classList.add('active');
 
 //rendo attivo anche il primo cerchio di navigazione
 
@@ -46,11 +50,12 @@ next.addEventListener('click', function(){
         //vado a rimuovere la classe active da quello attuale
         items[itemActive].classList.remove('active');
         circles[itemActive].classList.remove('active');
+        previewItems[itemActive].classList.remove('active');
 
         //aggiungere la class active all'elemento successivo dell'Array items e cicle
         items[++itemActive].classList.add('active');
         circles[itemActive].classList.add('active');
-
+        previewItems[itemActive].classList.add('active');
     }
 
     //se siamo fuori dall'array riparti dal primo elemento
@@ -59,6 +64,7 @@ next.addEventListener('click', function(){
         //vado a rimuovere la classe active da quello attuale
         items[itemActive].classList.remove('active');
         circles[itemActive].classList.remove('active');
+        previewItems[itemActive].classList.remove('active');
 
         //imposto il valore di ItemActive alla prima locazione dell'Array
         itemActive = 0; 
@@ -66,6 +72,7 @@ next.addEventListener('click', function(){
         //aggiungere la class active al primo elemento dell'array items e cicle
         items[itemActive].classList.add('active');
         circles[itemActive].classList.add('active');
+        previewItems[itemActive].classList.add('active');
 
     }
 });
