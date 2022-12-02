@@ -27,12 +27,12 @@ itemsPreview.innerHTML +=itemsContent;
 
 //const items = document.querySelector('.item'); //ALTERNATIVA
 const items = document.querySelectorAll('.slider .item');
+const previewItems = document.querySelectorAll('.preview .item');
+
 let itemActive = 0;
 let itemPreviewActive = 0;
 
 items[itemActive].classList.add('active');
-
-const previewItems = document.querySelectorAll('.preview .item');
 previewItems[itemActive].classList.add('active');
 
 //rendo attivo anche il primo cerchio di navigazione
@@ -44,9 +44,10 @@ circles[itemActive].classList.add('active');
 const prev = document.querySelector('.prev');
 const next = document.querySelector('.next');
 
+//aggiungo degli EventListener ad ogni cerchio di navigazione e se premuto va a quella immagine
 for(let i = 0; i < circles.length; i++){
     let circle = document.getElementById("circle-"+i);
-    circle.addEventListener('click', function(){
+    circle.addEventListener('click', () => {
         items[itemActive].classList.remove('active');
         circles[itemActive].classList.remove('active');
         previewItems[itemActive].classList.remove('active');
@@ -59,7 +60,7 @@ for(let i = 0; i < circles.length; i++){
     });
 }
 
-next.addEventListener('click', function(){
+next.addEventListener('click', () => {
 
     //vado a rimuovere la classe active da quello attuale
     items[itemActive].classList.remove('active');
@@ -76,7 +77,7 @@ next.addEventListener('click', function(){
     
 });
 
-prev.addEventListener('click', function(){
+prev.addEventListener('click', () => {
 
     //vado a rimuovere la classe active da quello attuale
     items[itemActive].classList.remove('active');
@@ -93,4 +94,40 @@ prev.addEventListener('click', function(){
     
 })
 
+//Aggiungo gli eventi alla freccia a destra(puoi scorrere premendo la freccia a destra)
+document.addEventListener('keydown', (event) => {
+    
+    if(event.key == "ArrowRight"){
+        items[itemActive].classList.remove('active');
+        circles[itemActive].classList.remove('active');
+        previewItems[itemActive].classList.remove('active');
+    
+        //verifico che non siamo fuori dall'array
+        (itemActive < imagesArray.length - 1) ? itemActive++ : itemActive = 0;
+    
+        //aggiungere la class active all'elemento successivo dell'Array items e cicle
+        items[itemActive].classList.add('active');
+        circles[itemActive].classList.add('active');
+        previewItems[itemActive].classList.add('active');
+    }
+}, false);
+
+//Aggiungo gli eventi alla freccia a sinistra(puoi scorrere premendo la freccia a sinistra)
+document.addEventListener('keydown', (event) => {
+
+    if(event.key == "ArrowLeft"){
+        //vado a rimuovere la classe active da quello attuale
+        items[itemActive].classList.remove('active');
+        circles[itemActive].classList.remove('active');
+        previewItems[itemActive].classList.remove('active');
+
+        //verifico che non siamo fuori dall'array
+        (itemActive > 0) ? itemActive-- : itemActive = imagesArray.length - 1;
+
+        //aggiungere la class active all'elemento precedente dell'Array items e cicle
+        items[itemActive].classList.add('active');
+        circles[itemActive].classList.add('active');
+        previewItems[itemActive].classList.add('active');
+    }
+}, false);
 
