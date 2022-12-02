@@ -97,7 +97,7 @@ prev.addEventListener('click', () => {
 //Aggiungo gli eventi alla freccia a destra(puoi scorrere premendo la freccia a destra)
 document.addEventListener('keydown', (event) => {
     
-    if(event.key == "ArrowRight"){
+    if(event.key == "ArrowRight" || event.key == "ArrowDown"){
         items[itemActive].classList.remove('active');
         circles[itemActive].classList.remove('active');
         previewItems[itemActive].classList.remove('active');
@@ -115,7 +115,7 @@ document.addEventListener('keydown', (event) => {
 //Aggiungo gli eventi alla freccia a sinistra(puoi scorrere premendo la freccia a sinistra)
 document.addEventListener('keydown', (event) => {
 
-    if(event.key == "ArrowLeft"){
+    if(event.key == "ArrowLeft" || event.key == "ArrowUp"){
         //vado a rimuovere la classe active da quello attuale
         items[itemActive].classList.remove('active');
         circles[itemActive].classList.remove('active');
