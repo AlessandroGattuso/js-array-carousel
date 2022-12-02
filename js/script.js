@@ -94,7 +94,7 @@ prev.addEventListener('click', () => {
     
 })
 
-//Aggiungo gli eventi alla freccia a destra(puoi scorrere premendo la freccia a destra)
+//Aggiungo gli eventi alla freccia a destra e sotto(puoi scorrere premendo la freccia a destra e sotto)
 document.addEventListener('keydown', (event) => {
     
     if(event.key == "ArrowRight" || event.key == "ArrowDown"){
@@ -112,7 +112,7 @@ document.addEventListener('keydown', (event) => {
     }
 }, false);
 
-//Aggiungo gli eventi alla freccia a sinistra(puoi scorrere premendo la freccia a sinistra)
+//Aggiungo gli eventi alla freccia a sinistra e sopra(puoi scorrere premendo la freccia a sinistra e sopra)
 document.addEventListener('keydown', (event) => {
 
     if(event.key == "ArrowLeft" || event.key == "ArrowUp"){
