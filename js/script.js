@@ -30,7 +30,6 @@ const items = document.querySelectorAll('.slider .item');
 const previewItems = document.querySelectorAll('.preview .item');
 
 let itemActive = 0;
-let itemPreviewActive = 0;
 
 items[itemActive].classList.add('active');
 previewItems[itemActive].classList.add('active');
